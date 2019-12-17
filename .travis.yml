@@ -1,0 +1,31 @@
+os: linux
+dist: bionic
+
+env:
+  global:
+  - SOMEBRANCH: "dev"
+
+stages:
+- name: One
+  if: branch = env(SOMEBRANCH)
+- name: Two
+  if: branch = "dev"
+
+jobs:
+  include:
+  - stage: One
+    name: Job 0
+    install: skip
+    script: echo "Stage One depends on env()"
+  - stage: Two
+    name: Job Zero
+    install: skip
+    script: echo "Stage Two does NOT depend on env()"
+  - if: branch = env(SOMEBRANCH)
+    name: Job One
+    install: skip
+    script: echo "Job One depends on env()"
+  - if: branch = "dev"
+    name: Job Two
+    install: skip
+    script: echo "Job Two does NOT depend on env()"
