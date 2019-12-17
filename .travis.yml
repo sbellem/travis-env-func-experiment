@@ -12,6 +12,8 @@ stages:
   if: branch = "dev"
 - name: Three
   if: branch = env(SOMEBRANCH)
+- name: Hope
+  if: branch = env(SOMEBRANCH)
 
 jobs:
   include:
