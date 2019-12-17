@@ -14,6 +14,7 @@ stages:
   if: branch = env(SOMEBRANCH)
 - name: Hope
   if: branch = env(SOMEBRANCH)
+- name: Four
 
 jobs:
   include:
@@ -37,3 +38,8 @@ jobs:
     name: Hope
     install: skip
     script: echo "Stage Three depends on env()"
+  - if: branch = env(SOMEBRANCH)
+    stage: Four
+    name: Persevere
+    install: skip
+    script: echo "Stage Four depends on env()"
