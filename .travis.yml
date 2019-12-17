@@ -6,8 +6,8 @@ env:
   - SOMEBRANCH: "dev"
 
 stages:
-- name: One
-  if: branch = env(SOMEBRANCH)
+- if: branch = env(SOMEBRANCH)
+  name: One
 - name: Two
   if: branch = "dev"
 - name: Three
